@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.4.5.2.min.css">
+
+    <!-- Include fontawesome CSS -->
+    <link rel="stylesheet" href="fontawesome-free-6.4.2-web/css/all.min.css">
+
+    <!-- Include jQuery -->
+    <script src="js/jquery-3.5.1.min.js"></script>
+
+    <!-- Include DataTables CSS and JavaScript -->
+    <link rel="stylesheet" type="text/css" href="css/dataTables.bootstrap4.min.css">
+    <script type="text/javascript" charset="utf8"
+        src="js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" charset="utf8"
+        src="js/dataTables.bootstrap4.min.js"></script>
+        
+
+    <style>
+        body {
+            font-family: Roboto;
+        }
+
+        h1 {
+            text-align: center;
+        }
+        td{
+           height: 5%;
+        }
+        th{
+            font-size: 15pt;
+            font-weight: bold;
+        }
+        
+    .btn-outline-secondary:hover{
+        background-color: #007DFF;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Bootstrap Table with Enhanced Column Filters and Pagination</h1><br>
+        <div class="w-auto h-auto mt-2 mb-2">
+            <table id="example" class="table table-striped table-bordered">
+                <thead class="text-white" style="background-color: #007DFF;">
+                    <tr>
+                        <th>Name</th>
+                        <th>Age</th>
+                        <th>City</th>
+                    </tr>
+                </thead>
+                <thead>
+                    <tr>
+                        <th>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                </div>
+                                <input class="form-control filter-input" data-column="0" type="text"
+                                    placeholder="Filter">
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-secondary filter-dropdown-toggle" type="button"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fas fa-filter"></i>
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item filter-option" data-value="">All</a>
+                                        <a class="dropdown-item filter-option" data-value="contains">Contains</a>
+                                        <a class="dropdown-item filter-option"
+                                            data-value="notcontains">DoesNotContain</a>
+                                        <a class="dropdown-item filter-option" data-value="startswith">StartsWith</a>
+                                        <a class="dropdown-item filter-option" data-value="endswith">EndsWith</a>
+                                        <a class="dropdown-item filter-option" data-value="equalto">EqualTo</a>
+                                        <a class="dropdown-item filter-option" data-value="notequalto">NotEqualTo</a>
+                                        <a class="dropdown-item filter-option" data-value="greaterthan">GreaterThan</a>
+                                        <a class="dropdown-item filter-option" data-value="lessthan">LessThan</a>
+                                        <a class="dropdown-item filter-option"
+                                            data-value="greaterthanorequalto">GreaterThanOrEqualTo</a>
+                                        <a class="dropdown-item filter-option"
+                                            data-value="lessthanorequalto">LessThanOrEqualTo</a>
+                                        <a class="dropdown-item filter-option" data-value="between">Between</a>
+                                        <a class="dropdown-item filter-option" data-value="notbetween">NotBetween</a>
+                                        <a class="dropdown-item filter-option" data-value="isempty">IsEmpty</a>
+                                        <a class="dropdown-item filter-option" data-value="notisempty">NotIsEmpty</a>
+                                        <a class="dropdown-item filter-option" data-value="isnull">IsNull</a>
+                                        <a class="dropdown-item filter-option" data-value="notisnull">NotIsNull</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </th>
+                        <th>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                </div>
+                                <input class="form-control filter-input" data-column="1" type="text"
+                                    placeholder="Filter">
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-secondary filter-dropdown-toggle" type="button"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fas fa-filter"></i>
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item filter-option" data-value="">All</a>
+                                        <a class="dropdown-item filter-option" data-value="contains">Contains</a>
+                                        <a class="dropdown-item filter-option"
+                                            data-value="notcontains">DoesNotContain</a>
+                                        <a class="dropdown-item filter-option" data-value="startswith">StartsWith</a>
+                                        <a class="dropdown-item filter-option" data-value="endswith">EndsWith</a>
+                                        <a class="dropdown-item filter-option" data-value="equalto">EqualTo</a>
+                                        <a class="dropdown-item filter-option" data-value="notequalto">NotEqualTo</a>
+                                        <a class="dropdown-item filter-option" data-value="greaterthan">GreaterThan</a>
+                                        <a class="dropdown-item filter-option" data-value="lessthan">LessThan</a>
+                                        <a class="dropdown-item filter-option"
+                                            data-value="greaterthanorequalto">GreaterThanOrEqualTo</a>
+                                        <a class="dropdown-item filter-option"
+                                            data-value="lessthanorequalto">LessThanOrEqualTo</a>
+                                        <a class="dropdown-item filter-option" data-value="between">Between</a>
+                                        <a class="dropdown-item filter-option" data-value="notbetween">NotBetween</a>
+                                        <a class="dropdown-item filter-option" data-value="isempty">IsEmpty</a>
+                                        <a class="dropdown-item filter-option" data-value="notisempty">NotIsEmpty</a>
+                                        <a class="dropdown-item filter-option" data-value="isnull">IsNull</a>
+                                        <a class="dropdown-item filter-option" data-value="notisnull">NotIsNull</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </th>
+                        <th>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                </div>
+                                <input class="form-control filter-input" data-column="2" type="text"
+                                    placeholder="Filter">
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-secondary filter-dropdown-toggle" type="button"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fas fa-filter"></i>
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item filter-option" data-value="">All</a>
+                                        <a class="dropdown-item filter-option" data-value="contains">Contains</a>
+                                        <a class="dropdown-item filter-option"
+                                            data-value="notcontains">DoesNotContain</a>
+                                        <a class="dropdown-item filter-option" data-value="startswith">StartsWith</a>
+                                        <a class="dropdown-item filter-option" data-value="endswith">EndsWith</a>
+                                        <a class="dropdown-item filter-option" data-value="equalto">EqualTo</a>
+                                        <a class="dropdown-item filter-option" data-value="notequalto">NotEqualTo</a>
+                                        <a class="dropdown-item filter-option" data-value="greaterthan">GreaterThan</a>
+                                        <a class="dropdown-item filter-option" data-value="lessthan">LessThan</a>
+                                        <a class="dropdown-item filter-option"
+                                            data-value="greaterthanorequalto">GreaterThanOrEqualTo</a>
+                                        <a class="dropdown-item filter-option"
+                                            data-value="lessthanorequalto">LessThanOrEqualTo</a>
+                                        <a class="dropdown-item filter-option" data-value="between">Between</a>
+                                        <a class="dropdown-item filter-option" data-value="notbetween">NotBetween</a>
+                                        <a class="dropdown-item filter-option" data-value="isempty">IsEmpty</a>
+                                        <a class="dropdown-item filter-option" data-value="notisempty">NotIsEmpty</a>
+                                        <a class="dropdown-item filter-option" data-value="isnull">IsNull</a>
+                                        <a class="dropdown-item filter-option" data-value="notisnull">NotIsNull</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>John Doe</td>
+                        <td>30</td>
+                        <td>New York</td>
+                    </tr>
+                    <tr>
+                        <td>Jane Smith</td>
+                        <td>25</td>
+                        <td>Los Angeles</td>
+                    </tr>
+                    <tr>
+                        <td>Sam</td>
+                        <td>26</td>
+                        <td>California</td>
+                    </tr>
+                    <tr>
+                        <td>James</td>
+                        <td>32</td>
+                        <td>WashingTon DC</td>
+                    </tr>
+                    <tr>
+                        <td>William</td>
+                        <td>24</td>
+                        <td>Paris</td>
+                    </tr>
+                    <tr>
+                        <td>Ben</td>
+                        <td>23</td>
+                        <td>Carolina</td>
+                    </tr>
+                    <tr>
+                        <td>Chan</td>
+                        <td>22</td>
+                        <td>Arezona</td>
+                    </tr>
+                    <tr>
+                        <td>Will</td>
+                        <td>21</td>
+                        <td>London</td>
+                    </tr>
+                    <tr>
+                        <td>Siri</td>
+                        <td>19</td>
+                        <td>Miami</td>
+                    </tr>
+                    <tr>
+                        <td>Arthur</td>
+                        <td>34</td>
+                        <td>London</td>
+                    </tr>
+                    <tr>
+                        <td>ViVi</td>
+                        <td>27</td>
+                        <td>Bajin</td>
+                    </tr>
+                    <tr>
+                        <td>Mary</td>
+                        <td>28</td>
+                        <td>Seoul</td>
+                    </tr>
+                    <tr>
+                        <td>Paul</td>
+                        <td>29</td>
+                        <td>New York</td>
+                    </tr>
+                    <tr>
+                        <td>Logon</td>
+                        <td>30</td>
+                        <td>Texas</td>
+                    </tr>
+                    <tr>
+                        <td>Dane</td>
+                        <td>37</td>
+                        <td>Florida</td>
+                    </tr>
+                    <!-- Add more rows as needed -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script id="actions-template" type="text/template">
+        <button class="btn btn-primary btn-sm edit-button">Edit</button>
+        <button class="btn btn-danger btn-sm delete-button">Delete</button>
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            var table = $('#example').DataTable({
+                "paging": true,
+                "ordering": true,
+                "info": true,
+                "searching": true,
+                "order": []
+            });
+
+            // Add custom filters
+            $('.filter-input').on('keyup', function () {
+                var columnIndex = $(this).data('column');
+                var filterValue = this.value;
+                var filterSelect = $(this).siblings('.input-group').find('.filter-select').val();
+
+                applyFilter(columnIndex, filterValue, filterSelect);
+            });
+
+            $('.filter-dropdown-toggle').on('click', function () {
+                $(this).siblings('.dropdown-menu').toggleClass('show');
+            });
+
+            $('.filter-option').on('click', function () {
+                var filterValue = $(this).data('value');
+                var columnIndex = $(this).closest('th').find('.filter-input').data('column');
+                var keyword = $(this).closest('th').find('.filter-input').val();
+
+                // Check if the "All" option is selected
+                if (filterValue === "All") {
+                    // Clear the filter input
+                    $(this).closest('th').find('.filter-input').val('');
+                }
+
+                applyFilter(columnIndex, keyword, filterValue);
+
+                // Close the dropdown menu
+                $(this).closest('.dropdown-menu').removeClass('show');
+            });
+
+            function applyFilter(columnIndex, keyword, filterValue) {
+                var table = $('#example').DataTable();
+
+                switch (filterValue) {
+                    case "contains":
+                        table.column(columnIndex).search(keyword).draw();
+                        break;
+                    case "notcontains":
+                        table.column(columnIndex).search('^' + keyword, true, false).draw();
+                        break;
+                    case "startswith":
+                        table.column(columnIndex).search('^' + keyword, true, false).draw();
+                        break;
+                    case "endswith":
+                        table.column(columnIndex).search(keyword + '$', true, false).draw();
+                        break;
+                    case "equalto":
+                        table.column(columnIndex).search('^' + keyword + '$', true, false).draw();
+                        break;
+                    case "notequalto":
+                        table.column(columnIndex).search('^(?!' + keyword + '$).+', true, false).draw();
+                        break;
+                    case "greaterthan":
+                        table.column(columnIndex).search('>' + keyword).draw();
+                        break;
+                    case "lessthan":
+                        table.column(columnIndex).search('<' + keyword).draw();
+                        break;
+                    case "greaterthanorequalto":
+                        table.column(columnIndex).search('>=' + keyword).draw();
+                        break;
+                    case "lessthanorequalto":
+                        table.column(columnIndex).search('<=' + keyword).draw();
+                        break;
+                    case "between":
+                        var values = keyword.split("-");
+                        if (values.length === 2) {
+                            table.column(columnIndex).search(values[0] + '-' + values[1]).draw();
+                        }
+                        break;
+                    case "notbetween":
+                        var values = keyword.split("-");
+                        if (values.length === 2) {
+                            table.column(columnIndex).search('^(?!(.*' + values[0] + '-.*' + values[1] + ')).*$', true, false).draw();
+                        }
+                        break;
+                    case "isempty":
+                        table.column(columnIndex).search('^$').draw();
+                        break;
+                    case "notisempty":
+                        table.column(columnIndex).search('^.+$', true, false).draw();
+                        break;
+                    case "isnull":
+                        table.column(columnIndex).search('^null$').draw();
+                        break;
+                    case "notisnull":
+                        table.column(columnIndex).search('^(?!null$).+', true, false).draw();
+                        break;
+                    default:
+                        table.column(columnIndex).search('').draw();
+                        break;
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
